@@ -7,6 +7,7 @@ public class TicTacToe {
 	public static Scanner scannerObject = new Scanner(System.in);
 	static char[] board = new char[10];
 	static char player,computer;
+	private static int playLocation;
 	
 	public static void createBoard(){
 		for(int index = 1 ; index<10 ; index++) {
@@ -34,17 +35,14 @@ public class TicTacToe {
 	}
 	
 	public static void userMove() {
-		
-		System.out.println("Enter the index where you want to make your move: (1-9)");
-		int userInput = scannerObject.nextInt();
-		
-		if(board[userInput] != 'X' && board[userInput] != 'O') {
-			System.out.println("Cell is free");
+		System.out.println("Enter Location 1-9 to Make Move");
+		playLocation = scannerObject.nextInt();
+		if (playLocation < 10 && playLocation > 0) {
+			board[playLocation] = player;
+			showBoard();
+		} else {
+			System.out.println("Invalid Choice");
 		}
-		else {
-			System.out.println("Cell is NOT free. Please Choose a different index");
-		}
-		showBoard();
 	}
 	
 	public static void main(String[] args) {
