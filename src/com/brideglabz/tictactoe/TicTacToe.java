@@ -28,6 +28,7 @@ public class TicTacToe {
 		 System.out.println("Computer's choice is : " +computer);
 	}
 	
+	
 	public static void showBoard() {
 		System.out.println();
         System.out.println("  " + board[1] + "  |  " + board[2]  + "   | " + board[3] + "  ");
@@ -57,6 +58,14 @@ public class TicTacToe {
 			System.out.println("Cell already occupied!. Choose a different cell;");
 		}
 		showBoard();
+		String winnerResult = checkForWinner();
+		if(winnerResult == "") {
+			System.out.println("Computer's Turn");
+		}
+		else {
+			System.out.println(winnerResult);
+		}
+		
 	}
 	
 	public static void checkToss() {
@@ -71,6 +80,62 @@ public class TicTacToe {
 		}
 	}
 	
+	public static String checkForWinner() {
+		System.out.println();
+		if ((board[1] == board[2]) && (board[2] == board[3])) {
+			if (player == board[1]) {
+				return "Player Wins";
+			} else if (computer == board[1]) {
+				return "Computer Wins";
+			}
+		} else if ((board[4] == board[5]) && (board[5] == board[6])) {
+			if (player == board[4]) {
+				return "Player Wins";
+			} else if (computer == board[4]) {
+				return "Computer Wins";
+			}
+		} else if ((board[7] == board[8]) && (board[8] == board[9])) {
+			if (player == board[7]) {
+				return "Player Wins";
+			} else if (computer == board[7]) {
+				return "Computer Wins";
+			}
+		} else if ((board[1] == board[4]) && (board[4] == board[7])) {
+			if (player == board[4]) {
+				return "Player Wins";
+			} else if (computer == board[4]) {
+				return "Computer Wins";
+			}
+		} else if ((board[2] == board[5]) && (board[5] == board[8])) {
+			if (player == board[2]) {
+				return "Player Wins";
+			} else if (computer == board[2]) {
+				return "Computer Wins";
+			}
+		} else if ((board[3] == board[6]) && (board[6] == board[9])) {
+			if (player == board[3]) {
+				return "Player Wins";
+			} else if (computer == board[3]) {
+				return "Computer Wins";
+			}
+		} else if ((board[1] == board[5]) && (board[5] == board[9])) {
+			if (player == board[1]) {
+				return "Player Wins";
+			} else if (computer == board[1]) {
+				return "Computer Wins";
+			}
+		} else if ((board[3] == board[5]) && (board[5] == board[7])) {
+			if (player == board[3]) {
+				return "Player Wins";
+			} else if (computer == board[3]) {
+				return "Computer Wins";
+			}
+		} else {
+			return "Draw";
+		}
+		return "";
+	}
+		
 	public static void main(String[] args) {
 		
 		System.out.println("----- Welcome To The Game Of Tic Tac Toe -----\n");
