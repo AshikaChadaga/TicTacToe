@@ -7,6 +7,7 @@ public class TicTacToe {
 	public static Scanner scannerObject = new Scanner(System.in);
 	static char[] board = new char[10];
 	static char player,computer;
+	private static int playLocation;
 	
 	public static void createBoard(){
 		for(int index = 1 ; index<10 ; index++) {
@@ -27,7 +28,9 @@ public class TicTacToe {
 		 System.out.println("Computer's choice is : " +computer);
 	}
 	
+	
 	public static void showBoard() {
+		System.out.println();
         System.out.println("  " + board[1] + "  |  " + board[2]  + "   | " + board[3] + "  ");
         System.out.println("------------------");
         System.out.println("  " + board[4] + "  |  " + board[5]  + "   | " + board[6] + "  ");
@@ -35,35 +38,34 @@ public class TicTacToe {
         System.out.println("  " + board[7] + "  |  " + board[8]  + "   | " + board[9] + "  ");
 	}
 	
-	public static boolean userMove(int userInput) {
-		
-		if(board[userInput] != 'X' && board[userInput] != 'O') {
-			System.out.println("Cell is free");
-			return true;
+
+	public static void userMove() {
+		System.out.println("Enter Location 1-9 to Make Move");
+		playLocation = scannerObject.nextInt();
+		scannerObject.nextLine();
+		if (isEmpty() && playLocation < 10 && playLocation > 0) {
+			board[playLocation] = player;
+			showBoard();
+		} else {
+			System.out.println("Invalid Choice");
 		}
-		else {
+	}
+	
+	public static boolean isEmpty() {
+		if (board[playLocation] == ' ') {
+			return true;
+		} else {
 			return false;
 		}
 	}
-	
-	public static void desiredMove(){
-		System.out.println("Enter the index where you want to make your move: (1-9)");
-		int userInput = scannerObject.nextInt();
-		if(userMove(userInput))
-			board[userInput] = player;
-		else {
-			System.out.println("Cell already occupied!. Choose a different cell;");
-		}
-		showBoard();
-	}
-	
+		
 	public static void main(String[] args) {
 		
-		System.out.println("----- Welcome To The Game Of Tic Tac Toe -----");
+		System.out.println("----- Welcome To The Game Of Tic Tac Toe -----\n");
 		createBoard();
 		getPlayerChoice();
 		showBoard();
-		desiredMove();
+		userMove();
 		
 
 	}
