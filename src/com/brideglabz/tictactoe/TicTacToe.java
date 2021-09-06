@@ -29,20 +29,30 @@ public class TicTacToe {
 	
 	public static void showBoard() {
         System.out.println("  " + board[1] + "  |  " + board[2]  + "   | " + board[3] + "  ");
+        System.out.println("------------------");
         System.out.println("  " + board[4] + "  |  " + board[5]  + "   | " + board[6] + "  ");
+        System.out.println("------------------");
         System.out.println("  " + board[7] + "  |  " + board[8]  + "   | " + board[9] + "  ");
 	}
 	
-	public static void userMove() {
-		
-		System.out.println("Enter the index where you want to make your move: (1-9)");
-		int userInput = scannerObject.nextInt();
+	public static boolean userMove(int userInput) {
 		
 		if(board[userInput] != 'X' && board[userInput] != 'O') {
 			System.out.println("Cell is free");
+			return true;
 		}
 		else {
-			System.out.println("Cell is NOT free. Please Choose a different index");
+			return false;
+		}
+	}
+	
+	public static void desiredMove(){
+		System.out.println("Enter the index where you want to make your move: (1-9)");
+		int userInput = scannerObject.nextInt();
+		if(userMove(userInput))
+			board[userInput] = player;
+		else {
+			System.out.println("Cell already occupied!. Choose a different cell;");
 		}
 		showBoard();
 	}
@@ -53,7 +63,7 @@ public class TicTacToe {
 		createBoard();
 		getPlayerChoice();
 		showBoard();
-		userMove();
+		desiredMove();
 		
 
 	}
