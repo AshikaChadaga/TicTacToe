@@ -4,19 +4,20 @@ import java.util.Scanner;
 
 public class TicTacToe {
 	
+	public static Scanner scannerObject = new Scanner(System.in);
 	static char[] board = new char[10];
 	static char player,computer;
-	public static Scanner scanner = new Scanner(System.in);
 	
-	static void createBoard(){
+	public static void createBoard(){
 		for(int index = 1 ; index<10 ; index++) {
 			board[index] = ' ';
 		}
 	}
 	
-	static void getPlayerChoice() {
+	public static void getPlayerChoice() {
+
 		 System.out.print("select X or O : ");
-		 player = Character.toUpperCase(scanner.next().charAt(0));
+		 player = Character.toUpperCase(scannerObject.next().charAt(0));
 		 
 		 if (player == 'X')
 			 computer='O';
@@ -26,10 +27,24 @@ public class TicTacToe {
 		 System.out.println("Computer's choice is : " +computer);
 	}
 	
-	static void showBoard() {
+	public static void showBoard() {
         System.out.println("  " + board[1] + "  |  " + board[2]  + "   | " + board[3] + "  ");
         System.out.println("  " + board[4] + "  |  " + board[5]  + "   | " + board[6] + "  ");
         System.out.println("  " + board[7] + "  |  " + board[8]  + "   | " + board[9] + "  ");
+	}
+	
+	public static void userMove() {
+		
+		System.out.println("Enter the index where you want to make your move: (1-9)");
+		int userInput = scannerObject.nextInt();
+		
+		if(board[userInput] != 'X' && board[userInput] != 'O') {
+			System.out.println("Cell is free");
+		}
+		else {
+			System.out.println("Cell is NOT free. Please Choose a different index");
+		}
+		showBoard();
 	}
 	
 	public static void main(String[] args) {
@@ -38,6 +53,7 @@ public class TicTacToe {
 		createBoard();
 		getPlayerChoice();
 		showBoard();
+		userMove();
 		
 
 	}
