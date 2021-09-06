@@ -12,11 +12,14 @@ public class TicTacToe {
 	private static int playLocation;
 	private static boolean playerWinToss;
 	private static boolean isWinner = false;
+	private static int userInput;
 
 	public static void createBoard() {
 		for (int index = 1; index < 10; index++) {
 			board[index] = ' ';
 		}
+		isWinner = false;
+		
 	}
 
 	public static void getPlayerChoice() {
@@ -384,10 +387,20 @@ public class TicTacToe {
 	public static void main(String[] args) {
 
 		System.out.println("----- Welcome To The Game Of Tic Tac Toe -----\n");
-		createBoard();
-		getPlayerChoice();
-		checkToss();
-		startGame();
+		boolean playMore = true;
+		while(playMore){
+			createBoard();
+			getPlayerChoice();
+			showBoard();
+			checkToss();
+			startGame();
+			System.out.println("Press '1' to continue playing, '2' to exit");
+			int userInput = scannerObject.nextInt();
+			if(userInput ==2) {
+				System.out.println("Thank You for playing. BYE!");
+				System.exit(0);
+			}
+		}
 
 	}
 
