@@ -37,6 +37,7 @@ public class TicTacToe {
 		System.out.println("----- Welcome To The Game Of Tic Tac Toe -----");
 		createBoard();
 		getPlayerChoice();
+		showBoard();
 		
 
 	}
