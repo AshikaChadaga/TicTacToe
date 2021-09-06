@@ -66,14 +66,14 @@ public class TicTacToe {
 		System.out.println("\nComputer Is Playing");
 		do {
 			playLocation = randomGenerator.nextInt(9) + 1;
-			if(computerWinMotive()) {
+			if(predictWinLocation()) {
 			}
 		} while (!isEmpty(playLocation));
 		board[playLocation] = computer;
 		showBoard();
 	}
 	
-	public static boolean computerWinMotive() {
+	public static boolean predictWinLocation() {
 		if (board[1] == computer && board[2] == computer && board[3] == ' ') {
 			playLocation = 3;
 			return true;
