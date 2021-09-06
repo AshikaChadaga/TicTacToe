@@ -15,12 +15,13 @@ public class TicTacToe {
 	}
 	
 	static void getPlayerChoice() {
-		 System.out.print("select x or o : ");
-		 player = scanner.next().charAt(0);
-		 if (player == 'x')
-			 computer='o';
+		 System.out.print("select X or O : ");
+		 player = Character.toUpperCase(scanner.next().charAt(0));
+		 
+		 if (player == 'X')
+			 computer='O';
 		 else
-			 computer ='x';
+			 computer ='X';
 		 System.out.println("You have selected : " +player);
 		 System.out.println("Computer's choice is : " +computer);
 	}
