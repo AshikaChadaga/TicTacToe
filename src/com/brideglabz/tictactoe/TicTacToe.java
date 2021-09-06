@@ -5,8 +5,9 @@ import java.util.Scanner;
 public class TicTacToe {
 	
 	public static Scanner scannerObject = new Scanner(System.in);
-	static char[] board = new char[10];
-	static char player,computer;
+	public static char[] board = new char[10];
+	public static char player,computer;
+	public static boolean playerStarts;
 	
 	public static void createBoard(){
 		for(int index = 1 ; index<10 ; index++) {
@@ -28,6 +29,7 @@ public class TicTacToe {
 	}
 	
 	public static void showBoard() {
+		System.out.println();
         System.out.println("  " + board[1] + "  |  " + board[2]  + "   | " + board[3] + "  ");
         System.out.println("------------------");
         System.out.println("  " + board[4] + "  |  " + board[5]  + "   | " + board[6] + "  ");
@@ -47,7 +49,7 @@ public class TicTacToe {
 	}
 	
 	public static void desiredMove(){
-		System.out.println("Enter the index where you want to make your move: (1-9)");
+		System.out.println("\nEnter the index where you want to make your move: (1-9)");
 		int userInput = scannerObject.nextInt();
 		if(userMove(userInput))
 			board[userInput] = player;
@@ -57,11 +59,24 @@ public class TicTacToe {
 		showBoard();
 	}
 	
+	public static void checkToss() {
+		int playerFirst = 1;
+		double tossResult = Math.floor(Math.random() * 10) % 2;
+		if (tossResult == playerFirst) {
+			playerStarts = true;
+			System.out.println("\nPlayer Won The Toss! Player Starts");
+		} else {
+			playerStarts = false;
+			System.out.println("\nComputer Won The Toss! Computer Starts");
+		}
+	}
+	
 	public static void main(String[] args) {
 		
-		System.out.println("----- Welcome To The Game Of Tic Tac Toe -----");
+		System.out.println("----- Welcome To The Game Of Tic Tac Toe -----\n");
 		createBoard();
 		getPlayerChoice();
+		checkToss();
 		showBoard();
 		desiredMove();
 		
