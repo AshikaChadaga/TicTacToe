@@ -42,11 +42,23 @@ public class TicTacToe {
 	public static void userMove() {
 		System.out.println("Enter Location 1-9 to Make Move");
 		playLocation = scannerObject.nextInt();
-		if (playLocation < 10 && playLocation > 0) {
+
+		scannerObject.nextLine();
+		if (isEmpty() && playLocation < 10 && playLocation > 0) {
+
 			board[playLocation] = player;
 			showBoard();
 		} else {
 			System.out.println("Invalid Choice");
+
+		}
+	}
+	
+	public static boolean isEmpty() {
+		if (board[playLocation] == ' ') {
+			return true;
+		} else {
+			return false;
 		}
 
 	}
